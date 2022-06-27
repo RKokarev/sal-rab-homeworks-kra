@@ -21,6 +21,8 @@ function calcShipping(sum, min, shipping) {
     else if (productsSum > 0 && productsSum < freeShippingMinSum)
         shippingSum = shippingPrice;
 
+    console.log (`Стоимость доставки равна ${shippingSum}`);
+
     // Конец решения задания №2.1.
     
 
@@ -64,29 +66,32 @@ function calcInvoice({sum, discountMinSum, discountPart, shippingFreeMinSum, shi
     // уменьшите totalSum на discountSum
 
     let totalSum = productsSum;
-    console.log (`${totalSum} цена продукта без скидки`); // check
+    //console.log (`${totalSum} цена продукта без скидки`); // check
     
     totalSum -= discountSum;
-    console.log (`${totalSum} цена продукта со скидкой`); // check
+    //console.log (`${totalSum} цена продукта со скидкой`); // check
 
     let shippingSum = calcShipping(totalSum, shippingFreeMinSum, shippingPrice); // не изменяйте эту строку!!!
 
     // прибавьте к totalSum значение shippingSum
-    console.log (`${shippingSum} стоимость доставки`); // check
+    //console.log (`${shippingSum} стоимость доставки`); // check
 
     totalSum += shippingSum;
-    console.log (`${totalSum} цена продукта с доставкой`); // check
+    //console.log (`${totalSum} цена продукта с доставкой`); // check
 
     // создайте переменную freeShipping
     // запишите без использования if или любых других условий:
     // если shippingSum равно нулю, то freeShipping должна быть равна true, иначе freeShipping должна быть равна false
 
-   let freeShipping;
+   let freeShipping = false;   
 
-   let abc = shippingSum = 0 ? freeShipping = true : freeShipping = false;
+   //console.log (`${shippingSum} стоимость доставки до моего кода`); // check
+   //console.log (`Доставка бесплатная (до моего кода)? - ${freeShipping}`); // check
 
-   console.log (`${shippingSum} стоимость доставки`); // check
-   console.log (`Доставка бесплатная? - ${freeShipping}`); // check
+   freeShipping = !shippingSum;
+
+   //console.log (`${shippingSum} стоимость доставки после моего кода`); // check
+   //console.log (`Доставка бесплатная (после моего кода)? - ${freeShipping}`); // check
 
 
     

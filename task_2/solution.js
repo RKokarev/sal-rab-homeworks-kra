@@ -21,7 +21,7 @@ function calcShipping(sum, min, shipping) {
     else if (productsSum > 0 && productsSum < freeShippingMinSum)
         shippingSum = shippingPrice;
 
-    console.log (`Стоимость доставки равна ${shippingSum}`);
+    //console.log (`Стоимость доставки равна ${shippingSum}`);
 
     // Конец решения задания №2.1.
     

@@ -30,7 +30,7 @@ function renderProductsCards(json) {
     products = parseProducts(json);
     length = products.length;
 
-    for (let i = 0; i < (products.length-1); i+= 1) {
+    for (let i = 0; i < (products.length-1); i++) {
         addProduct(products[i]);        
     }
     

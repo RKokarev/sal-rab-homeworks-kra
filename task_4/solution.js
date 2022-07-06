@@ -17,7 +17,7 @@ function parseProducts(json) {
 // и выполняете addProduct с каждым элементом массива products (передавая элемент массива как аргумент)
 
 let data = {};
-data = json.parse(json);
+data = JSON.parse(json);
 let products = data.products;
 
 return products;

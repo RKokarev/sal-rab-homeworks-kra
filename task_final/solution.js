@@ -34,20 +34,39 @@
 // }
 
 function sendRequest(name, phone, address, goods, sum) {
-    let data = {goods: [], order: {}};
-
-    let countOfGoods = goods.length;
-
-    for (let i = 0; i <= countOfGoods; i += 1) {
-        data.goods.push(goods[i].title);
+    
+    let dataProperty = {client: '', order: {}, goods: []};
+    
+    for (let i = 0; i <= (goods.length-1); i++) {
+        let good = {title: goods[i].title, count: goods[i].count};        
+        dataProperty.goods.push(good);        
     }
+    
+    let addressString = '';
+    for (property in address) {
+        let value = address[property];
+        
+        if (property=='street') {
+            addressString = `${addressString}ул. ${value}, `;
+        }
+        if (property=='house') {
+            addressString = `${addressString}дом ${value}, `;
+        }
+        if (property=='entrance') {
+            addressString = `${addressString}${value} подъезд, `;
+        }
+        if (property=='floor') {
+            addressString = `${addressString}${value} этаж, `;
+        }
+        if (property=='flat') {
+            addressString = `${addressString}кв ${value}`;
+        }
+    }
+                
+    dataProperty.order = {address: addressString, sum: sum};
+    dataProperty.client = `${name} ${phone}`;
 
-    data.order.address = address;
-    data.order.sum = name + phone + address + goods + sum;
-
-    data.client = 'Иван';
-
-    let jsonData = JSON.stringify(data);
+    let jsonData = JSON.stringify({data:dataProperty});
 
     return jsonData;
 }

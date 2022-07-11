@@ -37,32 +37,11 @@ function sendRequest(name, phone, address, goods, sum) {
     
     let dataProperty = {client: '', order: {}, goods: []};
     
-    for (let i = 0; i <= (goods.length-1); i++) {
-        let good = {title: goods[i].title, count: goods[i].count};        
-        dataProperty.goods.push(good);        
+    for (let i = 0; i <= (goods.length-1); i++) {               
+        dataProperty.goods.push({title: goods[i].title, count: goods[i].count});
     }
-    
-    let addressString = '';
-    for (property in address) {
-        let value = address[property];
         
-        if (property=='street') {
-            addressString = `${addressString}ул. ${value}, `;
-        }
-        if (property=='house') {
-            addressString = `${addressString}дом ${value}, `;
-        }
-        if (property=='entrance') {
-            addressString = `${addressString}${value} подъезд, `;
-        }
-        if (property=='floor') {
-            addressString = `${addressString}${value} этаж, `;
-        }
-        if (property=='flat') {
-            addressString = `${addressString}кв ${value}`;
-        }
-    }
-                
+    let addressString = `ул. ${address.street}, дом ${address.house}, ${address.entrance} подъезд, ${address.floor} этаж, кв ${address.flat}`;
     dataProperty.order = {address: addressString, sum: sum};
     dataProperty.client = `${name} ${phone}`;
 
